@@ -1,0 +1,45 @@
+﻿# Build results
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+
+# Dependencies
+packages/
+.nuget/
+
+# IDE
+*.csproj.user
+*.vbproj.user
+*.rsxproj.user
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment and secrets
+appsettings.Development.json
+appsettings.Local.json
+*.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Coverage
+coverage/
+*.coverage
