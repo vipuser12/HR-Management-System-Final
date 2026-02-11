@@ -8,29 +8,29 @@ namespace HRManagementSys.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    // [Authorize] // فك الكومنت عن دي لو عايز تقفل الـ Controller كله بالـ Token
     public class EmployeesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+
 
         public EmployeesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        
+
         [Authorize(Policy = "view_employees")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetAll()
         {
             var employees = await _context.Employees
-                .Include(e => e.Salary) 
+                .Include(e => e.Salary)
                 .ToListAsync();
 
             return Ok(employees);
         }
 
-        
+
         [Authorize(Policy = "view_employees")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetById(int id)
@@ -44,7 +44,7 @@ namespace HRManagementSys.Controllers
             return Ok(employee);
         }
 
-        
+
         [Authorize(Policy = "create_employees")]
         [HttpPost]
         public async Task<ActionResult<Employee>> Create(Employee employee)
@@ -57,8 +57,8 @@ namespace HRManagementSys.Controllers
             return CreatedAtAction(nameof(GetById), new { id = employee.Id }, employee);
         }
 
-        
-        [Authorize(Policy = "create_employees")] 
+
+        [Authorize(Policy = "create_employees")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Employee employee)
         {
@@ -79,7 +79,7 @@ namespace HRManagementSys.Controllers
             return NoContent();
         }
 
-       
+
         [Authorize(Policy = "create_employees")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

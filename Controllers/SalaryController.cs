@@ -35,7 +35,7 @@ namespace HRManagementSys.Controllers
             var employeeExists = await _context.Employees.AnyAsync(e => e.Id == salary.EmployeeId);
             if (!employeeExists) return NotFound("الموظف غير موجود");
 
-           
+            
             salary.EffectiveDate = DateTime.Now;
             _context.Salaries.Add(salary);
 

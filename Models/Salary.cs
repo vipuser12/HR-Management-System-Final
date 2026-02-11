@@ -20,6 +20,7 @@ namespace HRManagementSys.Models
         [Column(TypeName = "date")]
         public DateTime EffectiveDate { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual Employee Employee { get; set; }
     }
 }
